@@ -1,0 +1,13 @@
+{
+  "name": "image-vectorize",
+  "version": "1.0.0",
+  "private": true,
+  "description": "在浏览器本地把 PNG/JPG 转成 SVG 的静态网页",
+  "scripts": {
+    "test": "node --test test/vectorize.test.js"
+  },
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18"
+  }
+}

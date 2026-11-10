@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>图片转矢量图</title>
+  <meta name="description" content="在浏览器本地把 PNG 或 JPG 转成 SVG。图片不会上传，也不需要账号。">
+  <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>图片转矢量图</h1>
+      <p class="lead">选择一张 PNG 或 JPG，在浏览器里转成 SVG 并下载。图片只留在本机，不会上传，也不需要账号。</p>
+    </header>
+
+    <section class="panel">
+      <button class="drop" id="drop" type="button">
+        <strong>点击选择，或把图片拖到这里</strong>
+        <span>支持 PNG、JPG</span>
+      </button>
+      <input id="file" class="file-input" type="file" accept="image/png,image/jpeg,.png,.jpg,.jpeg" aria-label="选择 PNG 或 JPG">
+
+      <div class="controls">
+        <div class="control">
+          <div class="control-label">
+            <label for="color-count">颜色数</label>
+            <output id="color-count-value" for="color-count">8</output>
+          </div>
+          <input id="color-count" type="range" min="2" max="32" value="8" step="1">
+          <p class="hint">数值越大，保留的颜色越多。</p>
+        </div>
+        <div class="control">
+          <div class="control-label">
+            <label for="detail">细节</label>
+            <output id="detail-value" for="detail">50</output>
+          </div>
+          <input id="detail" type="range" min="0" max="100" value="50" step="1">
+          <p class="hint">数值越大，小色块保留越多；调低会省略细碎边缘。</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="download" type="button" disabled>下载 SVG</button>
+        <p id="status" class="status" role="status">选择一张 PNG 或 JPG。</p>
+      </div>
+      <p id="scale-note" class="note" hidden></p>
+
+      <div class="previews">
+        <section>
+          <h2>原图</h2>
+          <div class="frame">
+            <p id="original-empty" class="empty">选择图片后显示在这里</p>
+            <img id="original" alt="原图预览" hidden>
+          </div>
+        </section>
+        <section>
+          <h2>矢量预览</h2>
+          <div class="frame">
+            <p id="svg-empty" class="empty">转换后的 SVG 显示在这里</p>
+            <img id="svg-preview" alt="SVG 预览" hidden>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <footer>
+      <p>更适合 logo、图标等高对比图片。复杂照片可能会被简化成色块。本页不会自动去除背景。</p>
+      <p>转换使用本机的 imagetracerjs 1.2.6（The Unlicense）。</p>
+    </footer>
+  </main>
+  <noscript>需要启用 JavaScript。转换在你的浏览器内完成，不会上传图片。</noscript>
+  <script src="vendor/imagetracerjs/imagetracer.js"></script>
+  <script src="js/trace-options.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
