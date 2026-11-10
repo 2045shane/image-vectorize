@@ -1,0 +1,226 @@
+:root {
+  --bg: #f3efe8;
+  --ink: #1c1916;
+  --muted: #5f584f;
+  --card: #fffdf9;
+  --line: #e4dacb;
+  --accent: #143d33;
+  --accent-hot: #b4431f;
+  --frame: #efe8dc;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(180, 67, 31, 0.08), transparent 32rem),
+    var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", "WenQuanYi Micro Hei", "Droid Sans Fallback", sans-serif;
+  line-height: 1.5;
+}
+
+.wrap {
+  width: min(960px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.5rem 0 2rem;
+}
+
+header h1 {
+  margin: 0 0 0.4rem;
+  font-size: 2rem;
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  margin: 0;
+  max-width: 40rem;
+  color: var(--muted);
+}
+
+.panel {
+  margin-top: 1rem;
+  padding: 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+
+.drop {
+  width: 100%;
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 7.5rem;
+  padding: 1.25rem;
+  border: 1.5px dashed #c9bba6;
+  border-radius: 14px;
+  background: #fbf7f1;
+  color: var(--ink);
+  font: inherit;
+  appearance: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.drop.is-over,
+.drop:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(20, 61, 51, 0.12);
+}
+
+.drop strong { display: block; font-size: 1.05rem; }
+
+.drop span { color: var(--muted); }
+
+.file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.control-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-weight: 600;
+}
+
+output {
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-hot);
+}
+
+input[type="range"] {
+  width: 100%;
+  margin: 0.45rem 0 0.2rem;
+  accent-color: var(--accent-hot);
+}
+
+.hint,
+.note,
+.status,
+footer {
+  color: var(--muted);
+}
+
+.hint,
+.note {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-top: 1.25rem;
+}
+
+#download {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.72rem 1.25rem;
+  background: var(--accent);
+  color: #f7fffb;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#download:disabled {
+  background: #cfc6b8;
+  color: #6d675f;
+  cursor: not-allowed;
+}
+
+#download:focus-visible,
+.drop:focus-visible {
+  outline: 2px solid var(--accent-hot);
+  outline-offset: 3px;
+}
+
+.status {
+  margin: 0;
+  min-height: 1.5em;
+}
+
+.note { margin-top: 0.75rem; }
+
+.previews {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.previews h2 {
+  margin: 0 0 0.45rem;
+  font-size: 0.95rem;
+}
+
+.frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
+  padding: 0.75rem;
+  border-radius: 14px;
+  background:
+    linear-gradient(45deg, #e7e0d4 25%, transparent 25%),
+    linear-gradient(-45deg, #e7e0d4 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e7e0d4 75%),
+    linear-gradient(-45deg, transparent 75%, #e7e0d4 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+  background-color: #f7f3ec;
+  border: 1px solid var(--line);
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.empty {
+  margin: 0;
+  color: var(--muted);
+  background: rgba(255, 253, 249, 0.86);
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+}
+
+footer {
+  margin-top: 1.25rem;
+  font-size: 0.92rem;
+}
+
+footer p { margin: 0.2rem 0; }
+
+@media (max-width: 720px) {
+  .wrap { padding-top: 1.5rem; }
+  header h1 { font-size: 1.6rem; }
+  .controls,
+  .previews { grid-template-columns: 1fr; }
+  .frame { height: 220px; }
+}
